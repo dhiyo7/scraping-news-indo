@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
     res.json(`🚀 server run on ${PORT}`)
 })
 
-app.get('/kompas-news', (req, res) => {
+app.get('/api/kompas-news', (req, res) => {
     axios.get('https://indeks.kompas.com/')
         .then((response) => {
           const html = response.data
