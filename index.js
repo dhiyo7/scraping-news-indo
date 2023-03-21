@@ -34,7 +34,7 @@ app.get('/api/kompas-news', (req, res) => {
     if (category !== undefined || search !== undefined) {
         const reqCategory = articles.filter((a) => a?.category?.toLowerCase() === category?.toLowerCase() || a?.title?.toLowerCase().includes(search?.toLowerCase()))
         res.json({
-            message: "Success get news Kompas.com",
+            message: `Success get ${category !== undefined ? 'category' : 'search'} news Kompas.com`,
             status: 200,
             data: reqCategory
         })
