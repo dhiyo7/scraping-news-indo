@@ -1,6 +1,6 @@
-# API SPEC NEWS
+# API SPEC NEWS (Hedaline / News)
 
-## NEW KOMPAS.com
+## kompas.com
 
 Request :
 
@@ -11,6 +11,7 @@ Request :
     - Accept: application/json
 - Query Param :
     - category : string,
+    - search : string
     - page : number,
     - size : number
 
@@ -39,5 +40,34 @@ Response :
 
 ### Timeline
 
+#### kompas.com
+```text
 - List Data - ✅
-- Query Param - ⏳
+- Query Param : 
+  - category - ✅ 
+  - search - ✅
+  - page - ⏳
+  - size - ⏳
+```
+
+#### detik.com
+
+```text
+- List Data - ⏳
+- Query Param : 
+  - category - ⏳ 
+  - search - ⏳
+  - page - ⏳
+  - size - ⏳
+```
+
+#### cnnindonesia.com
+
+```text
+- List Data - ⏳
+- Query Param : 
+  - category - ⏳ 
+  - search - ⏳
+  - page - ⏳
+  - size - ⏳
+```
