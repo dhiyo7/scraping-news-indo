@@ -31,8 +31,6 @@ app.get('/', (req, res) => {
 
 app.get('/api/kompas-news', (req, res) => {
     const {category, search} = req.query
-    console.log("TITLE ", search)
-    console.log("CATEG  ", category)
     if (category !== undefined || search !== undefined) {
         const reqCategory = articles.filter((a) => a?.category?.toLowerCase() === category?.toLowerCase() || a?.title?.toLowerCase().includes(search?.toLowerCase()))
         res.json({
