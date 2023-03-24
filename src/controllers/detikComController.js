@@ -1,5 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
+const sentiment = require('multilang-sentiment');
+
 const baseResponse = require('../helper/baseResponse')
 const articles = []
 const detailArticles = {}
@@ -73,6 +75,8 @@ module.exports = {
                 chr('.detail__body-text', html).each((index, element) => {
                     const detail = chr(element).find('p').text().trim()
                     const newRes = {...detailArticles, detail}
+                    const resSentiment = sentiment(newRes.detail, 'id')
+                    console.log(resSentiment)
                     baseResponse.success(res, 'Success get data', 200, newRes)
                 })
             }).catch((e) => baseResponse.error(res, 503, e?.err?.message))
