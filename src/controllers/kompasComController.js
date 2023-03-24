@@ -2,6 +2,8 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const baseResponse = require('../helper/baseResponse')
 const articles = []
+const detailArticles = {}
+
 axios.get('https://indeks.kompas.com/')
     .then((response) => {
         const html = response.data
@@ -29,5 +31,18 @@ module.exports = {
         } else {
             baseResponse.success(res, 'Success get data', 200, articles)
         }
+    },
+    getNewsDetailKompas: (req, res) => {
+        const {detail} = req.query
+        axios.get(`${detail}`)
+            .then((response) => {
+                const html = response.data
+                const chr = cheerio.load(html)
+                chr('.read__content', html).each((index, element) => {
+                    const detail = chr(element).find('p').text().trim()
+                    const newRes = {...detailArticles, detail}
+                    baseResponse.success(res, 'Success get data', 200, newRes)
+                })
+            }).catch((e) => baseResponse.error(res, 503, e?.err?.message))
     }
 }
