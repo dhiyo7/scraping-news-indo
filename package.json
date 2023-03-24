@@ -4,7 +4,8 @@
   "description": "Scraping web news indo with sentiment analys",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "serve-server": "pm2 start app.config.json && pm2 list"
   },
   "author": "Dhiyo Reksa || dhiyo7",
   "license": "MIT",

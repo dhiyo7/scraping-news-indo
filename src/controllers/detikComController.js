@@ -22,7 +22,7 @@ axios.get('https://news.detik.com/indeks')
 
 module.exports = {
     getNewsDetik: (req, res) => {
-        const {search} = req.query
+        const {category,search} = req.query
         if (search !== undefined) {
             const reqSearch = articles.filter((a) => a?.title?.toLowerCase().includes(search?.toLowerCase()))
             baseResponse.success(res, 'Success get data', 200, reqSearch)
@@ -33,10 +33,8 @@ module.exports = {
 
     getNewsDetailDetik: (req, res) => {
         const {detail} = req.query
-        let detailUrl = detail
-        axios.get(`${detailUrl}`)
+        axios.get(`${detail}`)
             .then((response) => {
-                console.log("AA ", detailUrl)
                 const html = response.data
                 const chr = cheerio.load(html)
                 chr('.detail__body-text', html).each((index, element) => {
