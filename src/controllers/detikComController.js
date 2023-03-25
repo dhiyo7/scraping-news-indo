@@ -76,8 +76,8 @@ module.exports = {
                     const detail = chr(element).find('p').text().trim()
                     const newRes = {...detailArticles, detail}
                     const resSentiment = sentiment(newRes.detail, 'id')
-                    console.log(resSentiment)
-                    baseResponse.success(res, 'Success get data', 200, newRes)
+                    const finalRes = {...newRes, result_sentiment :resSentiment}
+                    baseResponse.success(res, 'Success get data', 200, finalRes)
                 })
             }).catch((e) => baseResponse.error(res, 503, e?.err?.message))
     }
